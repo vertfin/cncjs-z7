@@ -1,0 +1,36 @@
+{
+  "name": "cncjs-positional-output",
+  "version": "0.0.1",
+  "description": "Some display stuff for cncjs.",
+
+  "main": "./index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "bin": {
+    "cncjs-z7": "bin/cncjs-z7"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+  },
+  "keywords": [
+    "cncjs"
+  ],
+  "author": "jms",
+  "license": "MIT",
+  "bugs": {
+  },
+  "homepage": "",
+  "dependencies": {
+    "commander": "^5.1.0-4",
+    "inquirer": "^3.0.1",
+    "jsonwebtoken": "7.4.3",
+    "lodash": "^4.17.20",
+    "serialport": "^10.5.0",
+    "socket.io-client": "^2.3.0",
+    "vorpal": "^1.12.0"
+  }
+}
