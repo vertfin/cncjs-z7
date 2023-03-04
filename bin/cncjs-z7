@@ -33,6 +33,10 @@ var shutdown = function() {
     show(" BYE");
 };
 
+function active_state(t) {
+    return store.controller.state.status.activeState==t;
+}
+
 var showZ = function() {
     var z;
     if (store.controller.state.status) {
@@ -41,7 +45,9 @@ var showZ = function() {
         show(" HI ");
         return;
     }
-    if (store.locked) {
+    console.log(store.controller.state.status);
+
+    if (active_state('Alarm')) {
         show(alarm_msg);
         return;
     }
@@ -155,7 +161,6 @@ var createServer = function(options) {
 
         socket.on("disconnect", function() {
             console.log('Connection closed.');
-            reset_led();
             shutdown();
         });
         // Smoothie
@@ -180,15 +185,7 @@ var createServer = function(options) {
         });
 
         socket.on('serialport:read', function(data) {
-            const d = (data || '').trim();
-            //console.log("DATA ",d);
-            if (data.indexOf('Unlocked')!=-1) {
-                store.locked = false;
-            }
-            if (data.indexOf('ALARM')!=-1) {
-                store.locked = true;
-            }
-
+            // const d = (data || '').trim();
         });
 
         socket.on('serialport:close', function(data) {
